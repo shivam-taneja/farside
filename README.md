@@ -21,6 +21,10 @@ Look at the center of the screen and press the calibrate shortcut once. That pos
 
 Early. Expect jitter in bad light, with strong backlight, or when the face is only partly in frame. Meetings that take the camera will pause tracking until the camera is free.
 
+## Related
+
+- **Website** — [github.com/shivam-taneja/farside-web](https://github.com/shivam-taneja/farside-web) • the Next.js site deployed at [farside.shivamtaneja.com](https://farside.shivamtaneja.com/)
+
 ## Contributing
 
 Contributions are welcome! See [CONTRIBUTING.md](CONTRIBUTING.md) for setup instructions and guidelines.
