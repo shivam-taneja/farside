@@ -1,0 +1,9 @@
+<svg width="512" height="512" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <title>Farside</title>
+  <rect x="3" y="3" width="58" height="58" rx="15" fill="#14171F"/>
+  <path d="M15 17.5C15 15.567 16.567 14 18.5 14H32V50H18.5C16.567 50 15 48.433 15 46.5V17.5Z" fill="#F7F9FC"/>
+  <path d="M32 14H45.5C47.433 14 49 15.567 49 17.5V46.5C49 48.433 47.433 50 45.5 50H32V14Z" fill="#2F6BFF"/>
+  <path d="M32 14L42.5 18.5V45.5L32 50V14Z" fill="#78A0FF"/>
+  <path d="M32 14V50" stroke="#14171F" stroke-opacity="0.22" stroke-width="1.5"/>
+  <circle cx="25" cy="32" r="2.5" fill="#2F6BFF"/>
+</svg>
