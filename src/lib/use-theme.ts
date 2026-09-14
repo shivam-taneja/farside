@@ -1,6 +1,7 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 
 const STORAGE_KEY = "farside-theme";
+const SWITCH_DURATION_MS = 700; // matches theme-wash animation duration
 
 type ThemePreference = "light" | "dark" | "system";
 
@@ -23,6 +24,8 @@ export function useTheme() {
   const [dark, setDark] = useState<boolean>(() =>
     resolveIsDark(getStoredPreference()),
   );
+  const [switching, setSwitching] = useState(false);
+  const switchTimer = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   // Apply .dark class to root whenever resolved value changes
   useEffect(() => {
@@ -48,6 +51,15 @@ export function useTheme() {
       const next: ThemePreference = prev === "dark" ? "light" : "dark";
       localStorage.setItem(STORAGE_KEY, next);
       setDark(next === "dark");
+
+      // Trigger switching animation
+      setSwitching(true);
+      if (switchTimer.current) clearTimeout(switchTimer.current);
+      switchTimer.current = setTimeout(
+        () => setSwitching(false),
+        SWITCH_DURATION_MS,
+      );
+
       return next;
     });
   }
@@ -58,5 +70,5 @@ export function useTheme() {
     setDark(getSystemDark());
   }
 
-  return { dark, preference, toggleTheme, resetToSystem };
+  return { dark, switching, preference, toggleTheme, resetToSystem };
 }
