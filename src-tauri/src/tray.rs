@@ -5,7 +5,8 @@ use tauri::{App, Emitter, Manager};
 pub fn create_tray(app: &mut App) -> Result<(), Box<dyn std::error::Error>> {
     let show_i = MenuItem::with_id(app, "show", "Show Farside", true, None::<&str>)?;
     let separator1 = PredefinedMenuItem::separator(app)?;
-    let version_i = MenuItem::with_id(app, "version", "Version 1.0.0", false, None::<&str>)?;
+    let version_string = format!("Version {}", app.package_info().version);
+    let version_i = MenuItem::with_id(app, "version", &version_string, false, None::<&str>)?;
     let updates_i = MenuItem::with_id(app, "updates", "Check for Updates...", true, None::<&str>)?;
     let calibrate_i = MenuItem::with_id(
         app,
@@ -35,6 +36,7 @@ pub fn create_tray(app: &mut App) -> Result<(), Box<dyn std::error::Error>> {
     #[cfg(target_os = "macos")]
     let tray_icon = tauri::image::Image::from_bytes(include_bytes!("../icons/trayTemplate.png"))?;
 
+    #[allow(unused_mut)]
     let mut tray_builder = TrayIconBuilder::new().icon(tray_icon).menu(&menu);
 
     #[cfg(target_os = "macos")]
