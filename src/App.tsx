@@ -13,7 +13,7 @@ import { ThemeProvider } from "./components/theme-provider";
 
 export default function App() {
   return (
-    <ThemeProvider defaultTheme="system" storageKey="farside-ui-theme">
+    <ThemeProvider>
       <AppLayout>
         <Routes>
           <Route path="/" element={<Navigate to="/overview" replace />} />
