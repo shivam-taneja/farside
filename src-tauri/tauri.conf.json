@@ -1,7 +1,7 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "farside",
-  "version": "0.1.0",
+  "productName": "Farside",
+  "version": "1.0.0",
   "identifier": "com.shivamtaneja.farside",
   "build": {
     "beforeDevCommand": "pnpm dev",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "farside",
+        "title": "Farside",
         "width": 900,
         "height": 700,
         "resizable": false,
@@ -36,5 +36,13 @@
       "icons/icon.icns",
       "icons/icon.ico"
     ]
+  },
+  "plugins": {
+    "updater": {
+      "endpoints": [
+        "https://tauri-update-server.codesbyshivam.workers.dev/v1/{{target}}/{{current_version}}"
+      ],
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IDczOTgxMUYzMDU0MjkzQUQKUldTdGswSUY4eEdZYzFwN0VBWTluUm5lcVBrV0xMYnNGRWFvZmh4WVVzUDZaSUswTDlrMExhUWkK"
+    }
   }
 }
