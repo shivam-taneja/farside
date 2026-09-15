@@ -61,3 +61,32 @@ jobs:
           releaseDraft: false
           prerelease: false
           args: ${{ matrix.args }}
+
+      - name: Sign and upload updater signature (macOS only)
+        if: matrix.platform == 'macos-latest'
+        shell: bash
+        run: |
+          VERSION=$(node -p "require('./package.json').version")
+          if [[ "${{ matrix.args }}" == *"aarch64"* ]]; then
+            ARCH="aarch64"
+            TARGET_DIR="aarch64-apple-darwin"
+          else
+            ARCH="x64"
+            TARGET_DIR="x86_64-apple-darwin"
+          fi
+
+          TARBALL="src-tauri/target/${TARGET_DIR}/release/bundle/macos/Farside.app.tar.gz"
+
+          # Sign the exact tarball tauri-action just created and uploaded
+          printf '%s' "$TAURI_SIGNING_PRIVATE_KEY" > /tmp/updater.key
+          pnpm tauri signer sign -k /tmp/updater.key -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$TARBALL"
+          rm -f /tmp/updater.key
+
+          # Upload sig with the versioned name that matches the uploaded tarball
+          gh release upload "${{ github.ref_name }}" \
+            "${TARBALL}.sig#Farside_${VERSION}_${ARCH}.app.tar.gz.sig" \
+            --clobber
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          TAURI_SIGNING_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+          TAURI_SIGNING_PRIVATE_KEY_PASSWORD: ${{ secrets.TAURI_KEY_PASSWORD }}
