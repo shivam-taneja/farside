@@ -18,12 +18,21 @@ pub fn run() {
                 let quit_i = MenuItem::with_id(app, "quit", "Quit", true, None::<&str>)?;
                 let menu = Menu::with_items(app, &[&quit_i])?;
 
-                let _tray = TrayIconBuilder::new()
-                    .icon(tauri::image::Image::from_bytes(include_bytes!(
-                        "../icons/trayTemplate.png"
-                    ))?)
-                    .icon_as_template(true)
-                    .menu(&menu)
+                #[cfg(not(target_os = "macos"))]
+                let tray_icon =
+                    tauri::image::Image::from_bytes(include_bytes!("../icons/32x32.png"))?;
+                #[cfg(target_os = "macos")]
+                let tray_icon =
+                    tauri::image::Image::from_bytes(include_bytes!("../icons/trayTemplate.png"))?;
+
+                let mut tray_builder = TrayIconBuilder::new().icon(tray_icon).menu(&menu);
+
+                #[cfg(target_os = "macos")]
+                {
+                    tray_builder = tray_builder.icon_as_template(true);
+                }
+
+                let _tray = tray_builder
                     .on_menu_event(|app, event| match event.id.as_ref() {
                         "quit" => {
                             app.exit(0);
