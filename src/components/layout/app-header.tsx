@@ -1,7 +1,7 @@
-import { useIsMac } from "@/hooks/use-is-mac";
+import { useOS } from "@/hooks/use-os";
 
 export function AppHeader() {
-  const isMac = useIsMac();
+  const { isMac } = useOS();
 
   return (
     <div

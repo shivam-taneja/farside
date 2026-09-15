@@ -12,8 +12,8 @@ export function AppLayout({ children }: AppLayoutProps) {
       <AppHeader />
       <div className="flex flex-1 overflow-hidden">
         <AppSidebar />
-        <main className="flex-1 overflow-y-auto bg-white dark:bg-[#0E1015] p-5">
-          {children}
+        <main className="flex-1 overflow-y-auto bg-white dark:bg-[#0E1015]">
+          <div className="mx-auto w-full max-w-2xl px-4 py-10">{children}</div>
         </main>
       </div>
     </div>

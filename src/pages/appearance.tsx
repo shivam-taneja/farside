@@ -1,11 +1,13 @@
 import { useTheme } from "@/components/theme-provider";
 import { cn } from "@/lib/utils";
+import { useOS } from "@/hooks/use-os";
 
 export function Appearance() {
   const { theme, setTheme } = useTheme();
+  const { name: osName } = useOS();
 
   return (
-    <div className="mx-auto flex w-full max-w-2xl flex-col gap-8 py-10 px-4">
+    <div className="flex flex-col gap-8">
       <div>
         <h1 className="text-xs font-bold tracking-widest text-blue-500 uppercase mb-2">
           Appearance
@@ -25,18 +27,18 @@ export function Appearance() {
               App theme
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400">
-              Match macOS or Windows light and dark mode.
+              Match {osName} light and dark mode.
             </p>
           </div>
 
-          <div className="flex bg-gray-100 dark:bg-[#1A1C24] rounded-full p-1 border border-transparent dark:border-white/5 shadow-inner">
+          <div className="flex items-center gap-1 rounded-full p-1 border border-gray-200 dark:border-white/10 bg-gray-50 dark:bg-[#16181D]">
             <button
               onClick={() => setTheme("light")}
               className={cn(
-                "px-4 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer",
+                "px-3 py-1 rounded-full text-sm font-medium transition-all cursor-pointer",
                 theme === "light"
-                  ? "bg-white dark:bg-[#282B36] shadow-sm text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent",
+                  ? "bg-white dark:bg-[#1C1E26] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-white/5"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent border border-transparent",
               )}
             >
               Light
@@ -44,10 +46,10 @@ export function Appearance() {
             <button
               onClick={() => setTheme("dark")}
               className={cn(
-                "px-4 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer",
+                "px-3 py-1 rounded-full text-sm font-medium transition-all cursor-pointer",
                 theme === "dark"
-                  ? "bg-white dark:bg-[#282B36] shadow-sm text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent",
+                  ? "bg-white dark:bg-[#1C1E26] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-white/5"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent border border-transparent",
               )}
             >
               Dark
@@ -55,10 +57,10 @@ export function Appearance() {
             <button
               onClick={() => setTheme("system")}
               className={cn(
-                "px-4 py-1.5 rounded-full text-sm font-medium transition-all cursor-pointer",
+                "px-3 py-1 rounded-full text-sm font-medium transition-all cursor-pointer",
                 theme === "system"
-                  ? "bg-white dark:bg-[#282B36] shadow-sm text-gray-900 dark:text-white"
-                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent",
+                  ? "bg-white dark:bg-[#1C1E26] text-gray-900 dark:text-white shadow-sm border border-gray-200 dark:border-white/5"
+                  : "text-gray-500 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white bg-transparent border border-transparent",
               )}
             >
               System
