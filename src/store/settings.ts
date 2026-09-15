@@ -19,10 +19,13 @@ const tauriStorage = {
 };
 
 type Theme = "dark" | "light" | "system";
+export type UISize = "small" | "medium" | "large" | "system";
 
 interface SettingsState {
   theme: Theme;
   setTheme: (theme: Theme) => void;
+  uiSize: UISize;
+  setUiSize: (size: UISize) => void;
 }
 
 export const useSettingsStore = create<SettingsState>()(
@@ -30,6 +33,8 @@ export const useSettingsStore = create<SettingsState>()(
     (set) => ({
       theme: "system",
       setTheme: (theme) => set({ theme }),
+      uiSize: "system",
+      setUiSize: (uiSize) => set({ uiSize }),
     }),
     {
       name: "farside-settings",

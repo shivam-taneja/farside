@@ -188,6 +188,21 @@
     @apply border-border outline-ring/50;
   }
 
+  html {
+    @apply font-sans;
+    font-size: var(--app-base-size, 16px);
+  }
+
+  .ui-size-small {
+    --app-base-size: 14px;
+  }
+  .ui-size-medium {
+    --app-base-size: 16px;
+  }
+  .ui-size-large {
+    --app-base-size: 18px;
+  }
+
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
@@ -195,9 +210,6 @@
     letter-spacing: 0;
     margin: 0;
     @apply bg-background text-foreground;
-  }
-  html {
-    @apply font-sans;
   }
 }
 
