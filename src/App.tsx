@@ -1,5 +1,7 @@
 import "./App.css";
-import { Routes, Route, Navigate } from "react-router-dom";
+import { useEffect } from "react";
+import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import { listen } from "@tauri-apps/api/event";
 import { AppLayout } from "./components/layout/app-layout";
 
 import { Overview } from "./pages/overview";
@@ -12,6 +14,18 @@ import { About } from "./pages/about";
 import { ThemeProvider } from "./components/theme-provider";
 
 export default function App() {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    const unlisten = listen<string>("navigate", (event) => {
+      navigate(event.payload);
+    });
+
+    return () => {
+      unlisten.then((f) => f());
+    };
+  }, [navigate]);
+
   return (
     <ThemeProvider>
       <AppLayout>
