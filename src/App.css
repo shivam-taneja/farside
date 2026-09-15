@@ -56,6 +56,21 @@
   --color-fold-dark: var(--fold-dark);
   --font-heading: var(--font-sans);
   --font-sans: "Inter Variable", sans-serif;
+
+  --color-app-bg: var(--app-bg);
+  --color-app-panel: var(--app-panel);
+  --color-app-card: var(--app-card);
+  --color-app-accent: var(--app-accent);
+  --color-app-sidebar-active: var(--app-sidebar-active);
+  --color-app-sidebar-hover: var(--app-sidebar-hover);
+
+  --color-text-primary: var(--text-primary);
+  --color-text-secondary: var(--text-secondary);
+  --color-text-accent: var(--text-accent);
+
+  --color-app-border: var(--app-border);
+  --color-app-segmented-bg: var(--app-segmented-bg);
+  --color-app-segmented-active: var(--app-segmented-active);
 }
 
 :root {
@@ -96,6 +111,21 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
+
+  --app-bg: #0f121c;
+  --app-panel: #131721;
+  --app-card: #131822;
+  --app-accent: #49a0ff;
+  --app-sidebar-active: #070910;
+  --app-sidebar-hover: #0a0e16;
+
+  --text-primary: #f2f5f9;
+  --text-secondary: #b8bec8;
+  --text-accent: #49a0ff;
+
+  --app-border: #e5e7eb;
+  --app-segmented-bg: #f9fafb;
+  --app-segmented-active: #ffffff;
 }
 
 .dark {
@@ -135,6 +165,21 @@
   --fold-light: oklch(0.31 0.035 260);
   --fold-mid: oklch(0.26 0.05 258);
   --fold-dark: oklch(0.12 0.025 265);
+
+  --app-bg: #0f121c;
+  --app-panel: #131721;
+  --app-card: #131822;
+  --app-accent: #49a0ff;
+  --app-sidebar-active: #070910;
+  --app-sidebar-hover: #0a0e16;
+
+  --text-primary: #f2f5f9;
+  --text-secondary: #b8bec8;
+  --text-accent: #49a0ff;
+
+  --app-border: #2e333c;
+  --app-segmented-bg: #1f242e;
+  --app-segmented-active: #070910;
 }
 
 @layer base {
