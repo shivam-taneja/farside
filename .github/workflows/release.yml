@@ -78,7 +78,7 @@ jobs:
           TARBALL="src-tauri/target/${TARGET_DIR}/release/bundle/macos/Farside.app.tar.gz"
 
           # Sign using the committed key file (already checked out by actions/checkout)
-          pnpm tauri signer sign -k src-tauri/updater.key -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$TARBALL"
+          pnpm tauri signer sign -f src-tauri/updater.key -p "$TAURI_SIGNING_PRIVATE_KEY_PASSWORD" "$TARBALL"
 
           # Upload sig with the versioned name that matches the uploaded tarball
           gh release upload "${{ github.ref_name }}" \
