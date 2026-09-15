@@ -26,7 +26,7 @@ export function AppSidebar() {
     <div
       data-tauri-drag-region
       className={cn(
-        "flex h-full w-64 flex-col border-r border-gray-200 bg-[#F4F5F7] px-3 pb-4",
+        "flex h-full w-52 flex-col border-r border-gray-200 bg-[#F4F5F7] px-3 pb-4",
         isMac ? "pt-12" : "pt-4",
       )}
     >
