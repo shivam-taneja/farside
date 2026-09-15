@@ -80,9 +80,13 @@ jobs:
           # Sign using environment variables implicitly picked up by the CLI
           pnpm tauri signer sign "$TARBALL"
 
-          # Upload sig with the versioned name that matches the uploaded tarball
+          # Rename the signature locally so it uploads with the correct versioned name
+          SIG_NAME="Farside_${VERSION}_${ARCH}.app.tar.gz.sig"
+          cp "${TARBALL}.sig" "${SIG_NAME}"
+
+          # Upload sig
           gh release upload "${{ github.ref_name }}" \
-            "${TARBALL}.sig#Farside_${VERSION}_${ARCH}.app.tar.gz.sig" \
+            "${SIG_NAME}" \
             --clobber
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
