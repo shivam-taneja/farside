@@ -1,11 +1,4 @@
-import {
-  Clock,
-  Camera,
-  SlidersHorizontal,
-  Keyboard,
-  ShieldCheck,
-  Info,
-} from "lucide-react";
+import { Clock, Camera, SlidersHorizontal, Keyboard, Info } from "lucide-react";
 import pkg from "../../../package.json";
 import { cn } from "@/lib/utils";
 import { NavLink } from "react-router-dom";
@@ -15,7 +8,6 @@ const navItems = [
   { name: "Calibration", path: "/calibration", icon: Camera },
   { name: "Appearance", path: "/appearance", icon: SlidersHorizontal },
   { name: "Shortcuts", path: "/shortcuts", icon: Keyboard },
-  { name: "Privacy", path: "/privacy", icon: ShieldCheck },
   { name: "About", path: "/about", icon: Info },
 ];
 
