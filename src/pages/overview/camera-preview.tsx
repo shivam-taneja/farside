@@ -28,6 +28,12 @@ export function CameraPreview({
 
     if (isTracking) {
       activeRequestRef.current = true;
+      if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia) {
+        console.error("Media devices not supported or permission denied");
+        onCameraName("Camera not accessible");
+        return;
+      }
+
       navigator.mediaDevices
         .getUserMedia({ video: true })
         .then((stream) => {
