@@ -8,7 +8,6 @@ import {
 } from "lucide-react";
 import pkg from "../../../package.json";
 import { cn } from "@/lib/utils";
-import { useIsMac } from "@/hooks/use-is-mac";
 
 const navItems = [
   { name: "Overview", icon: Clock, isActive: false },
@@ -20,17 +19,9 @@ const navItems = [
 ];
 
 export function AppSidebar() {
-  const isMac = useIsMac();
-
   return (
-    <div
-      data-tauri-drag-region
-      className={cn(
-        "flex h-full w-52 flex-col border-r border-gray-200 bg-[#F4F5F7] px-3 pb-4",
-        isMac ? "pt-12" : "pt-4",
-      )}
-    >
-      <nav className="flex-1 space-y-1 mt-4">
+    <div className="flex h-full w-52 flex-col border-r border-gray-200 bg-[#F4F5F7] px-3 pb-4 pt-4">
+      <nav className="flex-1 space-y-1">
         {navItems.map((item) => {
           const Icon = item.icon;
           return (

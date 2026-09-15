@@ -55,7 +55,7 @@
   --color-fold-mid: var(--fold-mid);
   --color-fold-dark: var(--fold-dark);
   --font-heading: var(--font-sans);
-  --font-sans: 'Inter Variable', sans-serif;
+  --font-sans: "Inter Variable", sans-serif;
 }
 
 :root {
