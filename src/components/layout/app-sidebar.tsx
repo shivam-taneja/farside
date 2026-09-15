@@ -8,14 +8,15 @@ import {
 } from "lucide-react";
 import pkg from "../../../package.json";
 import { cn } from "@/lib/utils";
+import { NavLink } from "react-router-dom";
 
 const navItems = [
-  { name: "Overview", icon: Clock, isActive: false },
-  { name: "Calibration", icon: Camera, isActive: false },
-  { name: "Appearance", icon: SlidersHorizontal, isActive: true },
-  { name: "Shortcuts", icon: Keyboard, isActive: false },
-  { name: "Privacy", icon: ShieldCheck, isActive: false },
-  { name: "About", icon: Info, isActive: false },
+  { name: "Overview", path: "/overview", icon: Clock },
+  { name: "Calibration", path: "/calibration", icon: Camera },
+  { name: "Appearance", path: "/appearance", icon: SlidersHorizontal },
+  { name: "Shortcuts", path: "/shortcuts", icon: Keyboard },
+  { name: "Privacy", path: "/privacy", icon: ShieldCheck },
+  { name: "About", path: "/about", icon: Info },
 ];
 
 export function AppSidebar() {
@@ -25,19 +26,21 @@ export function AppSidebar() {
         {navItems.map((item) => {
           const Icon = item.icon;
           return (
-            <a
+            <NavLink
               key={item.name}
-              href="#"
-              className={cn(
-                "flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
-                item.isActive
-                  ? "bg-black/5 text-gray-900 shadow-sm border border-black/5"
-                  : "text-gray-600 hover:bg-black/5 hover:text-gray-900",
-              )}
+              to={item.path}
+              className={({ isActive }) =>
+                cn(
+                  "flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium transition-colors",
+                  isActive
+                    ? "bg-black/5 text-gray-900 shadow-sm border border-black/5"
+                    : "text-gray-600 hover:bg-black/5 hover:text-gray-900",
+                )
+              }
             >
               <Icon className="h-4.5 w-4.5 text-gray-500" />
               {item.name}
-            </a>
+            </NavLink>
           );
         })}
       </nav>
