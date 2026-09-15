@@ -41,7 +41,7 @@
   "plugins": {
     "updater": {
       "endpoints": [
-        "https://tauri-update-server.codesbyshivam.workers.dev/{{target}}/{{current_version}}"
+        "https://tauri-update-server.codesbyshivam.workers.dev/v1/{{target}}/{{arch}}/{{current_version}}"
       ],
       "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IENGQjVFOTc2RUM0RkE5RDEKUldUUnFVL3NkdW0xei9WL0lpTnBHUDU4bzJYV2tDbU0yK0kyOS94d0M3N3VZKzB5N29UR1J1L2IK"
     }
