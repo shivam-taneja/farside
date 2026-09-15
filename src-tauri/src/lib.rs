@@ -14,6 +14,9 @@ pub fn run() {
         .invoke_handler(tauri::generate_handler![greet])
         .on_window_event(|window, event| match event {
             tauri::WindowEvent::CloseRequested { api, .. } => {
+                if window.is_fullscreen().unwrap_or(false) {
+                    let _ = window.set_fullscreen(false);
+                }
                 let _ = window.hide();
                 api.prevent_close();
             }

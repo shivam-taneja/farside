@@ -9,7 +9,6 @@ export function Overview() {
   const [isFocused, setIsFocused] = useState(true);
   const [cameraName, setCameraName] = useState("Loading...");
 
-  // Handle window focus/blur for auto-pausing
   useEffect(() => {
     const handleFocus = () => setIsFocused(true);
     const handleBlur = () => setIsFocused(false);
@@ -23,7 +22,7 @@ export function Overview() {
     };
   }, []);
 
-  const isTracking = !isUserPaused && isFocused;
+  const isTracking = !isUserPaused;
 
   return (
     <div className="flex flex-col gap-6">
@@ -34,7 +33,11 @@ export function Overview() {
       />
 
       <SettingsCard className="border-app-border overflow-hidden bg-[#1A1F2B]">
-        <CameraPreview isTracking={isTracking} onCameraName={setCameraName} />
+        <CameraPreview
+          isTracking={isTracking}
+          showPreview={isFocused}
+          onCameraName={setCameraName}
+        />
         <TrackingMetrics cameraName={cameraName} />
       </SettingsCard>
 

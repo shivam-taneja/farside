@@ -2,11 +2,13 @@ import { useEffect, useRef } from "react";
 
 interface CameraPreviewProps {
   isTracking: boolean;
+  showPreview: boolean;
   onCameraName: (name: string) => void;
 }
 
 export function CameraPreview({
   isTracking,
+  showPreview,
   onCameraName,
 }: CameraPreviewProps) {
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -57,9 +59,15 @@ export function CameraPreview({
     };
   }, [isTracking, onCameraName]);
 
+  useEffect(() => {
+    if (showPreview && videoRef.current && streamRef.current) {
+      videoRef.current.srcObject = streamRef.current;
+    }
+  }, [showPreview]);
+
   return (
     <div className="relative aspect-video w-full bg-[#121620] flex items-center justify-center overflow-hidden">
-      {isTracking ? (
+      {isTracking && showPreview ? (
         <video
           ref={videoRef}
           autoPlay
@@ -69,7 +77,7 @@ export function CameraPreview({
         />
       ) : (
         <div className="text-text-secondary text-sm font-medium">
-          Preview Paused
+          {isTracking ? "App in background (Preview hidden)" : "Preview Paused"}
         </div>
       )}
 
