@@ -22,6 +22,7 @@ pub fn run() {
                     .icon(tauri::image::Image::from_bytes(include_bytes!(
                         "../icons/trayTemplate.png"
                     ))?)
+                    .icon_as_template(true)
                     .menu(&menu)
                     .on_menu_event(|app, event| match event.id.as_ref() {
                         "quit" => {
